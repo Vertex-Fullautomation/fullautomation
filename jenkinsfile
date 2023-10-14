@@ -6,7 +6,7 @@ pipeline{
     stages{
         stage('Git Clone'){
             steps{
-               git branch: 'main', url: ''
+               git branch: 'main', url: 'https://github.com/spy1811/fullautomation.git'
             }
         }      
         stage("Build"){            
