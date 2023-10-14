@@ -1,0 +1,32 @@
+pipeline{
+    agent any
+    tools {
+        maven 'mymaven'
+            }
+    stages{
+        stage('Git Clone'){
+            steps{
+               git branch: 'main', url: ''
+            }
+        }      
+        stage("Build"){            
+            steps{
+                  sh "mvn clean install -DskipTests"        
+                   }                     
+                  }
+        stage('Docker Build'){
+            steps{
+                sh 'docker build -t nbktechnosys/bankimg .'
+            }
+        }
+        stage('Docker Push'){
+            steps{
+                withCredentials([string(credentialsId: 'docker-hub1', variable: 'dockerpush')]) {
+                sh 'docker login -u nbktechnosys -p ${dockerpush}'
+                }
+                 sh 'docker push nbktechnosys/bankimg'
+            }
+        
+    }
+}
+}
