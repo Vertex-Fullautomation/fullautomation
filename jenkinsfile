@@ -16,13 +16,13 @@ pipeline{
                   }
         stage('Docker Build'){
             steps{
-                sh 'docker build -t nbktechnosys/bankimg .'
+                sh 'docker build -t shubhamtech/raju .'
             }
         }
         stage('Docker Push'){
             steps{
-                withCredentials([string(credentialsId: 'docker-hub1', variable: 'dockerpush')]) {
-                sh 'docker login -u nbktechnosys -p ${dockerpush}'
+                withCredentials([string(credentialsId: 'dockerhublogin', variable: 'dockerpush')]) {
+                sh 'docker login -u shubhamtech -p ${dockerpush}'
                 }
                  sh 'docker push nbktechnosys/bankimg'
             }
