@@ -24,9 +24,48 @@ pipeline{
                 withCredentials([string(credentialsId: 'dockerhublogin', variable: 'dockerpush')]) {
                 sh 'docker login -u shubhamtech -p ${dockerpush}'
                 }
-                 sh 'docker push nbktechnosys/bankimg'
+                 sh 'docker push shubhamtech/raju'
             }
-        
-    }
-}
+       }
+     }
+        stage('Deploy app to Kubernetes'){
+        steps{
+            script{
+           kubernetesDeploy(configs: "", kubeconfigId: "kubernetes")
+            }
+        }
+
+        }
+       stage('Deploy app to Kubernetes'){
+        steps{
+            script{
+           kubernetesDeploy(configs: "", kubeconfigId: "kubernetes")
+            }
+        }
+
+        }
+         stage('Deploy app to Kubernetes'){
+        steps{
+            script{
+           kubernetesDeploy(configs: "", kubeconfigId: "kubernetes")
+            }
+        }
+
+        }
+         stage('Deploy app to Kubernetes'){
+        steps{
+            script{
+           kubernetesDeploy(configs: "", kubeconfigId: "kubernetes")
+            }
+        }
+
+        }
+         stage('Deploy app to Kubernetes'){
+        steps{
+            script{
+           kubernetesDeploy(configs: "", kubeconfigId: "kubernetes")
+            }
+        }
+
+        }
 }
