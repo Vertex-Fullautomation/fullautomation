@@ -31,7 +31,7 @@ pipeline{
         stage('Deploy app to Kubernetes'){
         steps{
             script{
-           kubernetesDeploy(configs: "", kubeconfigId: "kubernetes")
+           kubernetesDeploy(configs: "mysql-pv.yml", kubeconfigId: "kubernetes")
             }
         }
 
@@ -39,7 +39,7 @@ pipeline{
        stage('Deploy app to Kubernetes'){
         steps{
             script{
-           kubernetesDeploy(configs: "", kubeconfigId: "kubernetes")
+           kubernetesDeploy(configs: "mysql-secrets.yml", kubeconfigId: "kubernetes")
             }
         }
 
@@ -47,7 +47,7 @@ pipeline{
          stage('Deploy app to Kubernetes'){
         steps{
             script{
-           kubernetesDeploy(configs: "", kubeconfigId: "kubernetes")
+           kubernetesDeploy(configs: "mysql-configMap.yml", kubeconfigId: "kubernetes")
             }
         }
 
@@ -55,7 +55,7 @@ pipeline{
          stage('Deploy app to Kubernetes'){
         steps{
             script{
-           kubernetesDeploy(configs: "", kubeconfigId: "kubernetes")
+           kubernetesDeploy(configs: "db-deployment.yml", kubeconfigId: "kubernetes")
             }
         }
 
@@ -63,7 +63,7 @@ pipeline{
          stage('Deploy app to Kubernetes'){
         steps{
             script{
-           kubernetesDeploy(configs: "", kubeconfigId: "kubernetes")
+           kubernetesDeploy(configs: "app-deployment.yml", kubeconfigId: "kubernetes")
             }
         }
 
